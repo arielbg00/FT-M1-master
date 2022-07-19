@@ -23,7 +23,7 @@ function DecimalABinario(num) {
   */
   var numBinario = "";
   while (num > 0) {
-    //numBinario += decimal % 2; 
+    //numBinario = numBinario + num % 2; 
     numBinario = num % 2 + numBinario;
     num = Math.floor(num / 2);
   }
