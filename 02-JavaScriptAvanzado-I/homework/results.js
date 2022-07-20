@@ -129,7 +129,7 @@ console.log("----------");
 
 function printing() {
     console.log(1);  //  ==>  1°
-    setTimeout(function() { console.log(2); }, 5000);  //  ==>  4°
+    setTimeout(function() { console.log(2); }, 6000);  //  ==>  4°
     setTimeout(function() { console.log(3); }, 0);  //  ==>  3°
     console.log(4);  //  ==>  2°
 }
