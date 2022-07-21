@@ -45,33 +45,17 @@ function cacheFunction(cb) {
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) 
 
   */
-  let result = {};
-  function memoria(arg) {
-    result = {nombre: cb(arg), total: arg};
-    return result.nombre;
-  }
+  const result = {};
   return function(arg) {
-    if("total" in result == true) {
-      if(result.total === arg) {
-        return result.total;
-      }
-    }
-    return memoria(arg);
-  }
-  
-  /*
-  function cacheFunction(cb) {
-    const result = {};
-    return function(arg) {
-      if (result.hasOwnProperty(arg)) {
-        return result[arg];
-      } else {
-        result[arg] = cb(arg);
-      }
+    if (result.hasOwnProperty(arg)) {
+      return result[arg];
+    } else {
+      result[arg] = cb(arg);
       return result[arg];
     }
   }
-
+  
+  /*
   function cacheFunction(cb) {
     let memoria = {};//crea objeto vacio
     
