@@ -38,8 +38,8 @@ function Queue() {
   
 }
 
-Queue.prototype.enqueue = function (val) {
-  return this.newArray.push(val);
+Queue.prototype.enqueue = function (value) {
+  return this.newArray.push(value);
 }
 
 Queue.prototype.dequeue = function () {
