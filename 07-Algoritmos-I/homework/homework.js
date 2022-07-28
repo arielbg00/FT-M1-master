@@ -25,7 +25,7 @@ function bubbleSort(array) {
   // Devolver el array ordenado resultante
   // Tu código:
   let swap = true;
-  // let max = array.length - 1;
+  // let max = array.length - 1; 
   while (swap) {
     swap = false;
     for (let i = 0; i < array.length - 1; i++) {  // i < max;
