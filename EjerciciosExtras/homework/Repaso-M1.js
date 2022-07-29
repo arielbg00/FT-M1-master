@@ -16,7 +16,15 @@ const {
 
 var countArray = function(array) {
     // Tu código aca:
-    
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+            sum = sum + countArray(array[i]);            
+        } else {
+            sum += array[i];
+        }
+    }
+    return sum;
 }
 
 
@@ -39,7 +47,14 @@ var countArray = function(array) {
 
 var countProps = function(obj) {
     // Tu código aca:
-
+    let counter = 0;
+    for (let propiedad in obj) {
+        counter++
+        if (typeof obj[propiedad] === "object" && Array.isArray(obj[propiedad]) === false) {
+            counter = counter + countProps(obj[propiedad]);
+        }
+    }
+    return counter;
 }
 
 
@@ -53,7 +68,16 @@ var countProps = function(obj) {
 
 LinkedList.prototype.changeNotNumbers = function(){
     // Tu código aca:
-
+    let current = this.head;
+    let counter = 0;
+    while (current !== null) {
+        if (current.value != Number(current.value)) {  //  isNaN(Number(current.value))
+            current.value = "Kiricocho";
+            counter++;
+        }
+        current = current.next;
+    }
+    return counter;
 }
 
 
@@ -67,7 +91,14 @@ LinkedList.prototype.changeNotNumbers = function(){
 
 var mergeQueues = function(queueOne, queueTwo) {
     // Tu código aca:
-
+    let newQueue = new Queue();
+    while (queueOne.size() || queueTwo.size()) {
+        let firstEle = queueOne.dequeue();
+        let secondEle = queueTwo.dequeue();
+        if (firstEle) newQueue.enqueue(firstEle);
+        if (secondEle) newQueue.enqueue(secondEle);
+    }
+    return newQueue;
 }
 
 
@@ -82,14 +113,19 @@ var mergeQueues = function(queueOne, queueTwo) {
 
 var closureMult = function(multiplier) {
     // Tu código aca:
-
+    return function(num) {
+        return multiplier * num;
+    }
 }
 
 // Implementar el método sum dentro del prototype de BinarySearchTree
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function() {
     // Tu código aca:
-
+    if (!this.left && !this.right) return this.value;
+    if (this.left && this.right === null) return this.value + this.left.sum();
+    if (this.left === null && this.right) return this.value + this.right.sum();
+    if (this.left && this.right) return this.value + this.left.sum() + this.right.sum();
 }
 
 module.exports = {
